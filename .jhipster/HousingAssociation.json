@@ -1,0 +1,39 @@
+{
+    "name": "HousingAssociation",
+    "fields": [
+        {
+            "fieldName": "housingAssociationName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "location",
+            "otherEntityRelationshipName": "housingAssociation",
+            "relationshipName": "location",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "inhabitant",
+            "otherEntityRelationshipName": "housingAssociation",
+            "relationshipName": "inhabitant"
+        }
+    ],
+    "changelogDate": "20200315200000",
+    "entityTableName": "housing_association",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

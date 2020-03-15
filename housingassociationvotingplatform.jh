@@ -1,0 +1,63 @@
+entity HousingAssociation {
+	housingAssociationName String required
+}
+
+entity Inhabitant {
+	phoneNumber String
+}
+
+entity Conclusion {
+	conclusionName String required,
+    conclusionContent String required
+}
+
+entity Voting {
+	startDate Instant required,
+	endDate Instant required
+}
+
+entity News {
+	title String required,
+	news String required
+}
+
+entity Region {
+	regionName String
+}
+
+entity Country {
+	countryName String
+}
+
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+relationship OneToOne {
+	Country{region} to Region,
+	Location{country} to Country,
+	HousingAssociation{location} to Location,
+	Conclusion{voting} to Voting
+}
+
+relationship OneToMany {
+	HousingAssociation to Inhabitant{housingAssociation},
+	Inhabitant to Conclusion{inhabitant},
+	Inhabitant to News{inhabitant}
+}
+
+// Set pagination options
+paginate Inhabitant, HousingAssociation, News with infinite-scroll
+paginate Conclusion with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl //except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

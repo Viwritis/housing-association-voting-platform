@@ -1,0 +1,24 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "news": {
+      "home": {
+        "title": "News",
+        "createLabel": "Dodaj News",
+        "createOrEditLabel": "Dodaj lub edytuj: News",
+        "notFound": "No News found"
+      },
+      "created": "Utworzono nowy obiekt typu News z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu News z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu News z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć News {{ id }}?"
+      },
+      "detail": {
+        "title": "News"
+      },
+      "title": "Title",
+      "news": "News",
+      "inhabitant": "Inhabitant"
+    }
+  }
+}

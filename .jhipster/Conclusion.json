@@ -1,0 +1,47 @@
+{
+    "name": "Conclusion",
+    "fields": [
+        {
+            "fieldName": "conclusionName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "conclusionContent",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "voting",
+            "otherEntityRelationshipName": "conclusion",
+            "relationshipName": "voting",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "inhabitant",
+            "otherEntityRelationshipName": "conclusion",
+            "relationshipName": "inhabitant",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200315200200",
+    "entityTableName": "conclusion",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

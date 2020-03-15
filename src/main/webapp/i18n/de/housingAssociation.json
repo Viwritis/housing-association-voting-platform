@@ -1,0 +1,24 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "housingAssociation": {
+      "home": {
+        "title": "Housing Associations",
+        "createLabel": "Housing Association erstellen",
+        "createOrEditLabel": "Housing Association erstellen oder bearbeiten",
+        "notFound": "No Housing Associations found"
+      },
+      "created": "Housing Association erstellt mit ID {{ param }}",
+      "updated": "Housing Association aktualisiert mit ID {{ param }}",
+      "deleted": "Housing Association gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Housing Association {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Housing Association"
+      },
+      "housingAssociationName": "Housing Association Name",
+      "location": "Location",
+      "inhabitant": "Inhabitant"
+    }
+  }
+}

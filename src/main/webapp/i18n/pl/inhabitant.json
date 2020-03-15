@@ -1,0 +1,25 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "inhabitant": {
+      "home": {
+        "title": "Inhabitant",
+        "createLabel": "Dodaj Inhabitant",
+        "createOrEditLabel": "Dodaj lub edytuj: Inhabitant",
+        "notFound": "No Inhabitants found"
+      },
+      "created": "Utworzono nowy obiekt typu Inhabitant z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Inhabitant z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Inhabitant z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Inhabitant {{ id }}?"
+      },
+      "detail": {
+        "title": "Inhabitant"
+      },
+      "phoneNumber": "Phone Number",
+      "conclusion": "Conclusion",
+      "news": "News",
+      "housingAssociation": "Housing Association"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "inhabitant": {
+      "home": {
+        "title": "Inhabitants",
+        "createLabel": "Inhabitant erstellen",
+        "createOrEditLabel": "Inhabitant erstellen oder bearbeiten",
+        "notFound": "No Inhabitants found"
+      },
+      "created": "Inhabitant erstellt mit ID {{ param }}",
+      "updated": "Inhabitant aktualisiert mit ID {{ param }}",
+      "deleted": "Inhabitant gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Inhabitant {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Inhabitant"
+      },
+      "phoneNumber": "Phone Number",
+      "conclusion": "Conclusion",
+      "news": "News",
+      "housingAssociation": "Housing Association"
+    }
+  }
+}
