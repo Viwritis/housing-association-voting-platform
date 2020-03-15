@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.home.title">Inhabitants</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-inhabitant" [routerLink]="['/inhabitant/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.home.createLabel">
+            Create a new Inhabitant
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="inhabitants?.length === 0">
+        <span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.home.notFound">No inhabitants found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="inhabitants?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phoneNumber"><span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.phoneNumber">Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="housingAssociation.id"><span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.housingAssociation">Housing Association</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let inhabitant of inhabitants ;trackBy: trackId">
+                    <td><a [routerLink]="['/inhabitant', inhabitant.id, 'view']">{{ inhabitant.id }}</a></td>
+                    <td>{{ inhabitant.phoneNumber }}</td>
+                    <td>
+                        <div *ngIf="inhabitant.housingAssociation">
+                            <a [routerLink]="['/housing-association', inhabitant.housingAssociation?.id, 'view']" >{{ inhabitant.housingAssociation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/inhabitant', inhabitant.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/inhabitant', inhabitant.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(inhabitant)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

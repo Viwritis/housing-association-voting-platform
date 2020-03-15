@@ -1,0 +1,23 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "voting": {
+      "home": {
+        "title": "Voting",
+        "createLabel": "Dodaj Voting",
+        "createOrEditLabel": "Dodaj lub edytuj: Voting",
+        "notFound": "No Votings found"
+      },
+      "created": "Utworzono nowy obiekt typu Voting z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Voting z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Voting z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Voting {{ id }}?"
+      },
+      "detail": {
+        "title": "Voting"
+      },
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    }
+  }
+}

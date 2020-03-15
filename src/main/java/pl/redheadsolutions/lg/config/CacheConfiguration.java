@@ -43,6 +43,17 @@ public class CacheConfiguration {
             createCache(cm, pl.redheadsolutions.lg.domain.User.class.getName());
             createCache(cm, pl.redheadsolutions.lg.domain.Authority.class.getName());
             createCache(cm, pl.redheadsolutions.lg.domain.User.class.getName() + ".authorities");
+            createCache(cm, pl.redheadsolutions.lg.domain.HousingAssociation.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.HousingAssociation.class.getName() + ".inhabitants");
+            createCache(cm, pl.redheadsolutions.lg.domain.Inhabitant.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.Inhabitant.class.getName() + ".conclusions");
+            createCache(cm, pl.redheadsolutions.lg.domain.Inhabitant.class.getName() + ".news");
+            createCache(cm, pl.redheadsolutions.lg.domain.Conclusion.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.Voting.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.News.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.Region.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.Country.class.getName());
+            createCache(cm, pl.redheadsolutions.lg.domain.Location.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

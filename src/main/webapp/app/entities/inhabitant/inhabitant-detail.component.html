@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inhabitant">
+            <h2><span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.detail.title">Inhabitant</span> {{ inhabitant.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ inhabitant.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.inhabitant.housingAssociation">Housing Association</span></dt>
+                <dd>
+                    <div *ngIf="inhabitant.housingAssociation">
+                        <a [routerLink]="['/housing-association', inhabitant.housingAssociation?.id, 'view']">{{ inhabitant.housingAssociation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inhabitant', inhabitant.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

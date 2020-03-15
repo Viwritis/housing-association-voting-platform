@@ -1,0 +1,41 @@
+{
+    "name": "Inhabitant",
+    "fields": [
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "conclusion",
+            "otherEntityRelationshipName": "inhabitant",
+            "relationshipName": "conclusion"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "news",
+            "otherEntityRelationshipName": "inhabitant",
+            "relationshipName": "news"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "housingAssociation",
+            "otherEntityRelationshipName": "inhabitant",
+            "relationshipName": "housingAssociation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200315200100",
+    "entityTableName": "inhabitant",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

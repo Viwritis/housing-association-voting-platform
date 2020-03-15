@@ -1,0 +1,25 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "conclusion": {
+      "home": {
+        "title": "Conclusions",
+        "createLabel": "Conclusion erstellen",
+        "createOrEditLabel": "Conclusion erstellen oder bearbeiten",
+        "notFound": "No Conclusions found"
+      },
+      "created": "Conclusion erstellt mit ID {{ param }}",
+      "updated": "Conclusion aktualisiert mit ID {{ param }}",
+      "deleted": "Conclusion gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Conclusion {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Conclusion"
+      },
+      "conclusionName": "Conclusion Name",
+      "conclusionContent": "Conclusion Content",
+      "voting": "Voting",
+      "inhabitant": "Inhabitant"
+    }
+  }
+}

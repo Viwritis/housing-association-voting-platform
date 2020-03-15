@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="housingAssociationVotingPlatformApp.voting.home.title">Votings</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-voting" [routerLink]="['/voting/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="housingAssociationVotingPlatformApp.voting.home.createLabel">
+            Create a new Voting
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="votings?.length === 0">
+        <span jhiTranslate="housingAssociationVotingPlatformApp.voting.home.notFound">No votings found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="votings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="housingAssociationVotingPlatformApp.voting.startDate">Start Date</span></th>
+                    <th scope="col" ><span jhiTranslate="housingAssociationVotingPlatformApp.voting.endDate">End Date</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let voting of votings ;trackBy: trackId">
+                    <td><a [routerLink]="['/voting', voting.id, 'view']">{{ voting.id }}</a></td>
+                    <td>{{ voting.startDate | date:'medium' }}</td>
+                    <td>{{ voting.endDate | date:'medium' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/voting', voting.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/voting', voting.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(voting)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

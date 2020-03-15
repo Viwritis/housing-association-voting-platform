@@ -1,0 +1,23 @@
+{
+  "housingAssociationVotingPlatformApp": {
+    "voting": {
+      "home": {
+        "title": "Votings",
+        "createLabel": "Voting erstellen",
+        "createOrEditLabel": "Voting erstellen oder bearbeiten",
+        "notFound": "No Votings found"
+      },
+      "created": "Voting erstellt mit ID {{ param }}",
+      "updated": "Voting aktualisiert mit ID {{ param }}",
+      "deleted": "Voting gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Voting {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Voting"
+      },
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    }
+  }
+}
