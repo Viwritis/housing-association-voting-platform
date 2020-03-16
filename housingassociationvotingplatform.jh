@@ -8,7 +8,9 @@ entity Inhabitant {
 
 entity Conclusion {
 	conclusionName String required,
-    conclusionContent String required
+    conclusionContent String required,
+    creationDate Instant,
+    modificationDate Instant
 }
 
 entity Voting {
@@ -18,7 +20,9 @@ entity Voting {
 
 entity News {
 	title String required,
-	news String required
+	news String required, 
+    creationDate Instant,
+    modificationDate Instant
 }
 
 entity Region {
