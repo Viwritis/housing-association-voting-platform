@@ -21,6 +21,12 @@
             <column name="conclusion_content" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="creation_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="modification_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
             <column name="voting_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_conclusion_voting_id" />
             </column>
@@ -29,6 +35,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="conclusion" columnName="creation_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="conclusion" columnName="modification_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200315200200-1-relations" author="jhipster">
@@ -52,6 +60,8 @@
             <column name="id" type="numeric"/>
             <column name="conclusion_name" type="string"/>
             <column name="conclusion_content" type="string"/>
+            <column name="creation_date" type="datetime"/>
+            <column name="modification_date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

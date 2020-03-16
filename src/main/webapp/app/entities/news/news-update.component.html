@@ -36,6 +36,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="housingAssociationVotingPlatformApp.news.creationDate" for="field_creationDate">Creation Date</label>
+                    <div class="d-flex">
+                        <input id="field_creationDate" type="datetime-local" class="form-control" name="creationDate" formControlName="creationDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="housingAssociationVotingPlatformApp.news.modificationDate" for="field_modificationDate">Modification Date</label>
+                    <div class="d-flex">
+                        <input id="field_modificationDate" type="datetime-local" class="form-control" name="modificationDate" formControlName="modificationDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="housingAssociationVotingPlatformApp.news.inhabitant" for="field_inhabitant">Inhabitant</label>
                     <select class="form-control" id="field_inhabitant" name="inhabitant" formControlName="inhabitant">
                         <option [ngValue]="null"></option>

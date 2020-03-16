@@ -16,6 +16,14 @@
                 <dd>
                     <span>{{ conclusion.conclusionContent }}</span>
                 </dd>
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{ conclusion.creationDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.modificationDate">Modification Date</span></dt>
+                <dd>
+                    <span>{{ conclusion.modificationDate }}</span>
+                </dd>
                 <dt><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.voting">Voting</span></dt>
                 <dd>
                     <div *ngIf="conclusion.voting">

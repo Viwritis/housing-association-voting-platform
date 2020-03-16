@@ -25,6 +25,8 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="title"><span jhiTranslate="housingAssociationVotingPlatformApp.news.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="news"><span jhiTranslate="housingAssociationVotingPlatformApp.news.news">News</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creationDate"><span jhiTranslate="housingAssociationVotingPlatformApp.news.creationDate">Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="modificationDate"><span jhiTranslate="housingAssociationVotingPlatformApp.news.modificationDate">Modification Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="inhabitant.id"><span jhiTranslate="housingAssociationVotingPlatformApp.news.inhabitant">Inhabitant</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -34,6 +36,8 @@
                     <td><a [routerLink]="['/news', news.id, 'view']">{{ news.id }}</a></td>
                     <td>{{ news.title }}</td>
                     <td>{{ news.news }}</td>
+                    <td>{{ news.creationDate | date:'medium' }}</td>
+                    <td>{{ news.modificationDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="news.inhabitant">
                             <a [routerLink]="['/inhabitant', news.inhabitant?.id, 'view']" >{{ news.inhabitant?.id }}</a>

@@ -16,6 +16,14 @@
                 <dd>
                     <span>{{ news.news }}</span>
                 </dd>
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.news.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{ news.creationDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="housingAssociationVotingPlatformApp.news.modificationDate">Modification Date</span></dt>
+                <dd>
+                    <span>{{ news.modificationDate }}</span>
+                </dd>
                 <dt><span jhiTranslate="housingAssociationVotingPlatformApp.news.inhabitant">Inhabitant</span></dt>
                 <dd>
                     <div *ngIf="news.inhabitant">

@@ -15,6 +15,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,6 +38,12 @@ public class NewsResourceIT {
 
     private static final String DEFAULT_NEWS = "AAAAAAAAAA";
     private static final String UPDATED_NEWS = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATION_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATION_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_MODIFICATION_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_MODIFICATION_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private NewsRepository newsRepository;
@@ -60,7 +68,9 @@ public class NewsResourceIT {
     public static News createEntity(EntityManager em) {
         News news = new News()
             .title(DEFAULT_TITLE)
-            .news(DEFAULT_NEWS);
+            .news(DEFAULT_NEWS)
+            .creationDate(DEFAULT_CREATION_DATE)
+            .modificationDate(DEFAULT_MODIFICATION_DATE);
         return news;
     }
     /**
@@ -72,7 +82,9 @@ public class NewsResourceIT {
     public static News createUpdatedEntity(EntityManager em) {
         News news = new News()
             .title(UPDATED_TITLE)
-            .news(UPDATED_NEWS);
+            .news(UPDATED_NEWS)
+            .creationDate(UPDATED_CREATION_DATE)
+            .modificationDate(UPDATED_MODIFICATION_DATE);
         return news;
     }
 
@@ -98,6 +110,8 @@ public class NewsResourceIT {
         News testNews = newsList.get(newsList.size() - 1);
         assertThat(testNews.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testNews.getNews()).isEqualTo(DEFAULT_NEWS);
+        assertThat(testNews.getCreationDate()).isEqualTo(DEFAULT_CREATION_DATE);
+        assertThat(testNews.getModificationDate()).isEqualTo(DEFAULT_MODIFICATION_DATE);
     }
 
     @Test
@@ -168,7 +182,9 @@ public class NewsResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(news.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
-            .andExpect(jsonPath("$.[*].news").value(hasItem(DEFAULT_NEWS)));
+            .andExpect(jsonPath("$.[*].news").value(hasItem(DEFAULT_NEWS)))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].modificationDate").value(hasItem(DEFAULT_MODIFICATION_DATE.toString())));
     }
     
     @Test
@@ -183,7 +199,9 @@ public class NewsResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(news.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
-            .andExpect(jsonPath("$.news").value(DEFAULT_NEWS));
+            .andExpect(jsonPath("$.news").value(DEFAULT_NEWS))
+            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
+            .andExpect(jsonPath("$.modificationDate").value(DEFAULT_MODIFICATION_DATE.toString()));
     }
 
     @Test
@@ -208,7 +226,9 @@ public class NewsResourceIT {
         em.detach(updatedNews);
         updatedNews
             .title(UPDATED_TITLE)
-            .news(UPDATED_NEWS);
+            .news(UPDATED_NEWS)
+            .creationDate(UPDATED_CREATION_DATE)
+            .modificationDate(UPDATED_MODIFICATION_DATE);
 
         restNewsMockMvc.perform(put("/api/news")
             .contentType(MediaType.APPLICATION_JSON)
@@ -221,6 +241,8 @@ public class NewsResourceIT {
         News testNews = newsList.get(newsList.size() - 1);
         assertThat(testNews.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testNews.getNews()).isEqualTo(UPDATED_NEWS);
+        assertThat(testNews.getCreationDate()).isEqualTo(UPDATED_CREATION_DATE);
+        assertThat(testNews.getModificationDate()).isEqualTo(UPDATED_MODIFICATION_DATE);
     }
 
     @Test

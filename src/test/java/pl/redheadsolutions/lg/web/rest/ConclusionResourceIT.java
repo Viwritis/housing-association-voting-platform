@@ -15,6 +15,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,6 +38,12 @@ public class ConclusionResourceIT {
 
     private static final String DEFAULT_CONCLUSION_CONTENT = "AAAAAAAAAA";
     private static final String UPDATED_CONCLUSION_CONTENT = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATION_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATION_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_MODIFICATION_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_MODIFICATION_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private ConclusionRepository conclusionRepository;
@@ -60,7 +68,9 @@ public class ConclusionResourceIT {
     public static Conclusion createEntity(EntityManager em) {
         Conclusion conclusion = new Conclusion()
             .conclusionName(DEFAULT_CONCLUSION_NAME)
-            .conclusionContent(DEFAULT_CONCLUSION_CONTENT);
+            .conclusionContent(DEFAULT_CONCLUSION_CONTENT)
+            .creationDate(DEFAULT_CREATION_DATE)
+            .modificationDate(DEFAULT_MODIFICATION_DATE);
         return conclusion;
     }
     /**
@@ -72,7 +82,9 @@ public class ConclusionResourceIT {
     public static Conclusion createUpdatedEntity(EntityManager em) {
         Conclusion conclusion = new Conclusion()
             .conclusionName(UPDATED_CONCLUSION_NAME)
-            .conclusionContent(UPDATED_CONCLUSION_CONTENT);
+            .conclusionContent(UPDATED_CONCLUSION_CONTENT)
+            .creationDate(UPDATED_CREATION_DATE)
+            .modificationDate(UPDATED_MODIFICATION_DATE);
         return conclusion;
     }
 
@@ -98,6 +110,8 @@ public class ConclusionResourceIT {
         Conclusion testConclusion = conclusionList.get(conclusionList.size() - 1);
         assertThat(testConclusion.getConclusionName()).isEqualTo(DEFAULT_CONCLUSION_NAME);
         assertThat(testConclusion.getConclusionContent()).isEqualTo(DEFAULT_CONCLUSION_CONTENT);
+        assertThat(testConclusion.getCreationDate()).isEqualTo(DEFAULT_CREATION_DATE);
+        assertThat(testConclusion.getModificationDate()).isEqualTo(DEFAULT_MODIFICATION_DATE);
     }
 
     @Test
@@ -168,7 +182,9 @@ public class ConclusionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conclusion.getId().intValue())))
             .andExpect(jsonPath("$.[*].conclusionName").value(hasItem(DEFAULT_CONCLUSION_NAME)))
-            .andExpect(jsonPath("$.[*].conclusionContent").value(hasItem(DEFAULT_CONCLUSION_CONTENT)));
+            .andExpect(jsonPath("$.[*].conclusionContent").value(hasItem(DEFAULT_CONCLUSION_CONTENT)))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].modificationDate").value(hasItem(DEFAULT_MODIFICATION_DATE.toString())));
     }
     
     @Test
@@ -183,7 +199,9 @@ public class ConclusionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(conclusion.getId().intValue()))
             .andExpect(jsonPath("$.conclusionName").value(DEFAULT_CONCLUSION_NAME))
-            .andExpect(jsonPath("$.conclusionContent").value(DEFAULT_CONCLUSION_CONTENT));
+            .andExpect(jsonPath("$.conclusionContent").value(DEFAULT_CONCLUSION_CONTENT))
+            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
+            .andExpect(jsonPath("$.modificationDate").value(DEFAULT_MODIFICATION_DATE.toString()));
     }
 
     @Test
@@ -208,7 +226,9 @@ public class ConclusionResourceIT {
         em.detach(updatedConclusion);
         updatedConclusion
             .conclusionName(UPDATED_CONCLUSION_NAME)
-            .conclusionContent(UPDATED_CONCLUSION_CONTENT);
+            .conclusionContent(UPDATED_CONCLUSION_CONTENT)
+            .creationDate(UPDATED_CREATION_DATE)
+            .modificationDate(UPDATED_MODIFICATION_DATE);
 
         restConclusionMockMvc.perform(put("/api/conclusions")
             .contentType(MediaType.APPLICATION_JSON)
@@ -221,6 +241,8 @@ public class ConclusionResourceIT {
         Conclusion testConclusion = conclusionList.get(conclusionList.size() - 1);
         assertThat(testConclusion.getConclusionName()).isEqualTo(UPDATED_CONCLUSION_NAME);
         assertThat(testConclusion.getConclusionContent()).isEqualTo(UPDATED_CONCLUSION_CONTENT);
+        assertThat(testConclusion.getCreationDate()).isEqualTo(UPDATED_CREATION_DATE);
+        assertThat(testConclusion.getModificationDate()).isEqualTo(UPDATED_MODIFICATION_DATE);
     }
 
     @Test

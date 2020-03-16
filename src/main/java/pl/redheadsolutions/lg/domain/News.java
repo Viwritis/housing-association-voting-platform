@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.time.Instant;
 
 /**
  * A News.
@@ -32,6 +33,12 @@ public class News implements Serializable {
     @NotNull
     @Column(name = "news", nullable = false)
     private String news;
+
+    @Column(name = "creation_date")
+    private Instant creationDate;
+
+    @Column(name = "modification_date")
+    private Instant modificationDate;
 
     @ManyToOne
     @JsonIgnoreProperties("news")
@@ -72,6 +79,32 @@ public class News implements Serializable {
         this.news = news;
     }
 
+    public Instant getCreationDate() {
+        return creationDate;
+    }
+
+    public News creationDate(Instant creationDate) {
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    public void setCreationDate(Instant creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Instant getModificationDate() {
+        return modificationDate;
+    }
+
+    public News modificationDate(Instant modificationDate) {
+        this.modificationDate = modificationDate;
+        return this;
+    }
+
+    public void setModificationDate(Instant modificationDate) {
+        this.modificationDate = modificationDate;
+    }
+
     public Inhabitant getInhabitant() {
         return inhabitant;
     }
@@ -108,6 +141,8 @@ public class News implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", news='" + getNews() + "'" +
+            ", creationDate='" + getCreationDate() + "'" +
+            ", modificationDate='" + getModificationDate() + "'" +
             "}";
     }
 }

@@ -25,6 +25,8 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="conclusionName"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.conclusionName">Conclusion Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="conclusionContent"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.conclusionContent">Conclusion Content</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creationDate"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.creationDate">Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="modificationDate"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.modificationDate">Modification Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="voting.id"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.voting">Voting</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="inhabitant.id"><span jhiTranslate="housingAssociationVotingPlatformApp.conclusion.inhabitant">Inhabitant</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
@@ -35,6 +37,8 @@
                     <td><a [routerLink]="['/conclusion', conclusion.id, 'view']">{{ conclusion.id }}</a></td>
                     <td>{{ conclusion.conclusionName }}</td>
                     <td>{{ conclusion.conclusionContent }}</td>
+                    <td>{{ conclusion.creationDate | date:'medium' }}</td>
+                    <td>{{ conclusion.modificationDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="conclusion.voting">
                             <a [routerLink]="['/voting', conclusion.voting?.id, 'view']" >{{ conclusion.voting?.id }}</a>
