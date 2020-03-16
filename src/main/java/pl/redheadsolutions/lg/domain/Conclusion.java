@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.time.Instant;
 
 /**
  * A Conclusion.
@@ -32,6 +33,12 @@ public class Conclusion implements Serializable {
     @NotNull
     @Column(name = "conclusion_content", nullable = false)
     private String conclusionContent;
+
+    @Column(name = "creation_date")
+    private Instant creationDate;
+
+    @Column(name = "modification_date")
+    private Instant modificationDate;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -74,6 +81,32 @@ public class Conclusion implements Serializable {
 
     public void setConclusionContent(String conclusionContent) {
         this.conclusionContent = conclusionContent;
+    }
+
+    public Instant getCreationDate() {
+        return creationDate;
+    }
+
+    public Conclusion creationDate(Instant creationDate) {
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    public void setCreationDate(Instant creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Instant getModificationDate() {
+        return modificationDate;
+    }
+
+    public Conclusion modificationDate(Instant modificationDate) {
+        this.modificationDate = modificationDate;
+        return this;
+    }
+
+    public void setModificationDate(Instant modificationDate) {
+        this.modificationDate = modificationDate;
     }
 
     public Voting getVoting() {
@@ -125,6 +158,8 @@ public class Conclusion implements Serializable {
             "id=" + getId() +
             ", conclusionName='" + getConclusionName() + "'" +
             ", conclusionContent='" + getConclusionContent() + "'" +
+            ", creationDate='" + getCreationDate() + "'" +
+            ", modificationDate='" + getModificationDate() + "'" +
             "}";
     }
 }

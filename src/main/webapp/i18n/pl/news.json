@@ -18,6 +18,8 @@
       },
       "title": "Title",
       "news": "News",
+      "creationDate": "Creation Date",
+      "modificationDate": "Modification Date",
       "inhabitant": "Inhabitant"
     }
   }

@@ -5,6 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IConclusion, Conclusion } from 'app/shared/model/conclusion.model';
 import { ConclusionService } from './conclusion.service';
@@ -28,6 +30,8 @@ export class ConclusionUpdateComponent implements OnInit {
     id: [],
     conclusionName: [null, [Validators.required]],
     conclusionContent: [null, [Validators.required]],
+    creationDate: [],
+    modificationDate: [],
     voting: [],
     inhabitant: []
   });
@@ -42,6 +46,12 @@ export class ConclusionUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ conclusion }) => {
+      if (!conclusion.id) {
+        const today = moment().startOf('day');
+        conclusion.creationDate = today;
+        conclusion.modificationDate = today;
+      }
+
       this.updateForm(conclusion);
 
       this.votingService
@@ -75,6 +85,8 @@ export class ConclusionUpdateComponent implements OnInit {
       id: conclusion.id,
       conclusionName: conclusion.conclusionName,
       conclusionContent: conclusion.conclusionContent,
+      creationDate: conclusion.creationDate ? conclusion.creationDate.format(DATE_TIME_FORMAT) : null,
+      modificationDate: conclusion.modificationDate ? conclusion.modificationDate.format(DATE_TIME_FORMAT) : null,
       voting: conclusion.voting,
       inhabitant: conclusion.inhabitant
     });
@@ -100,6 +112,12 @@ export class ConclusionUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       conclusionName: this.editForm.get(['conclusionName'])!.value,
       conclusionContent: this.editForm.get(['conclusionContent'])!.value,
+      creationDate: this.editForm.get(['creationDate'])!.value
+        ? moment(this.editForm.get(['creationDate'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      modificationDate: this.editForm.get(['modificationDate'])!.value
+        ? moment(this.editForm.get(['modificationDate'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       voting: this.editForm.get(['voting'])!.value,
       inhabitant: this.editForm.get(['inhabitant'])!.value
     };

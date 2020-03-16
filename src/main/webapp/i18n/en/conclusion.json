@@ -18,6 +18,8 @@
       },
       "conclusionName": "Conclusion Name",
       "conclusionContent": "Conclusion Content",
+      "creationDate": "Creation Date",
+      "modificationDate": "Modification Date",
       "voting": "Voting",
       "inhabitant": "Inhabitant"
     }
